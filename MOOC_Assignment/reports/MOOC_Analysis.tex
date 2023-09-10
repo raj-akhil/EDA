@@ -1,0 +1,737 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={MOOC DATA ANALYSIS},
+  pdfauthor={Akhil Raj Rajan},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{MOOC DATA ANALYSIS}
+\author{Akhil Raj Rajan}
+\date{2022-11-05}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\subsection{INTRODUCTION}\label{introduction}}
+
+The aim of this project is to analyse the data related to massive open
+online course (MOOC) at Newcastle University. Basically, the data mining
+process has to be implemented in this case. However, the
+methodology/tool called CRISP-DM(Cross Industry Standard Process for
+data mining) can help to explore the data and provide some useful
+information from the raw data. CRISP-Dm is the commonly used data mining
+method in such cases worldwide. It consists mainly of six steps, and the
+process flow is not one-directional that is depending on the situation
+some steps will be executed multiple times. This idea is clearly
+explained in the below graph.
+
+The stages of CRISP-DM and the data mining process are shown below. In
+this figure, a single arrow shows a phase's dependence on the other, and
+a double arrow implies a repeated process.
+
+Business understanding, Data Understanding, Modelling, Evaluation, and
+Deployment are the six phases of CRISP-DM.
+
+\includegraphics{MOOC_Analysis_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\hypertarget{business-understanding}{%
+\subsubsection{\texorpdfstring{\textbf{Business
+Understanding}}{Business Understanding}}\label{business-understanding}}
+
+The first phase of the CRISP-DM technique is business understanding or
+domain understanding. By analysing, processing, and putting various
+algorithms into use, determine the sector of business that will change
+into relevant information at this point. Understanding business helps
+you identify problems, available resources (both hardware and people),
+and goals.
+
+\hypertarget{data-understanding}{%
+\subsubsection{\texorpdfstring{\textbf{Data
+Understanding}}{Data Understanding}}\label{data-understanding}}
+
+The second stage is closely related to the first understanding. Here,
+the meaning of the data in the real world is identified and conveyed to
+the stakeholders properly. The idea is that the person working on this
+data should understand the importance and relations of each variable in
+the data before proceeding to data mining.
+
+E.g., Primary keys, foreign keys, data type, number of observations and
+meaning of each field in business
+
+\hypertarget{data-preparation}{%
+\subsubsection{\texorpdfstring{\textbf{Data
+Preparation}}{Data Preparation}}\label{data-preparation}}
+
+In this stage, Data is prepared for analysis. Raw data collected from
+the source cannot be used directly, instead, it has to be prepared for
+starting the data mining process. In most cases, the following steps are
+carried out.
+
+Data cleaning- e.g., removing unwanted characters like space from the
+data. This step is very important because it significantly affects the
+joining and comparison of the data since this space may not be visible
+to the human eye at first.
+
+Data type changing- This step is also an important part, for example, if
+there is a column with string data type but on checking only numeric
+values are found, then changing the data type of the field to numeric
+will increase the speed of accessing the data. Additionally, some
+inbuilt functions are specific to certain data types alone, so using the
+original data type fails in leveraging these functions.
+
+\hypertarget{model}{%
+\subsubsection{\texorpdfstring{\textbf{Model}}{Model}}\label{model}}
+
+This is the core stage in CRISP-DM which create a model that replicates
+the real-world situation to solve the problem. Different approaches can
+be used for solving a problem. Some of them are
+
+\begin{itemize}
+\item
+  Simple Exploratory analysis
+\item
+  Principle Component Analysis
+\item
+  Linear Discriminant Analysis
+\item
+  Regression model
+\item
+  Decision tree
+\item
+  Random forest
+\end{itemize}
+
+Some times multiple models is used for solving a problem in CRISP-DM
+
+\hypertarget{evaluation}{%
+\subsubsection{\texorpdfstring{\textbf{Evaluation}}{Evaluation}}\label{evaluation}}
+
+In this phase, different models are compared and ranked based on their
+performance, algorithmic simplicity and deployment cost. The best model
+is selected based on these criteria. This section includes suggestions,
+recommendations and criticisms.
+
+\hypertarget{deployment}{%
+\subsubsection{\texorpdfstring{\textbf{Deployment}}{Deployment}}\label{deployment}}
+
+The deployment stage can range in complexity from deploying a repeatable
+data mining process across the company to something as simple as
+producing a report. This depends on the company's goals. Many times, the
+customer executes the deployment stages rather than the data analyst.
+However, even if the deployment effort is handled by the analyst, it is
+crucial for the customer to know upfront what steps must be taken.
+
+The deployment phase consists of mainly our tasks. They are
+
+\begin{itemize}
+\item
+  making preparations for deployment
+\item
+  organizing, observing, and maintenance~
+\item
+  presenting final findings
+\item
+  reviewing the outcomes
+\end{itemize}
+
+\hypertarget{business-understanding-1}{%
+\subsection{BUSINESS UNDERSTANDING}\label{business-understanding-1}}
+
+The first phase of the CRISP-DM technique is business understanding. The
+important stage in this phase is understanding the business requirement
+and problems. The objective of this data mining is well established and
+generates a good plan for the exploration in this step.
+
+\hypertarget{data-understanding-1}{%
+\subsection{DATA UNDERSTANDING}\label{data-understanding-1}}
+
+A massive open online course (MOOC) at Newcastle University named
+``Cyber Security: Safety At Home, Online, and in Life'' has been offered
+seven times to the general public using the online education platform
+FutureLearn.
+
+\begin{itemize}
+\tightlist
+\item
+  learner\_id -- The individual ID assigned to each student enrolled in
+  the course.
+\item
+  enrolled\_at -- This column contains the learner's enrollment date in
+  the course.
+\item
+  unrolled\_at -- The date the learner dropped out of the programme.
+\item
+  role -- defines the position of the registered candidate.
+\item
+  fully\_participated\_at - Indicates the time the learner finished the
+  course..
+\item
+  purchased\_statement\_at -- The purchase statement's generation date
+  is indicated in this column.
+\item
+  gender -- displays the learner's gender who has signed up for the
+  course.
+\item
+  country -- Indicates the country the learner selected while
+  registering for~the course.
+\item
+  age\_range -- shows the range of registered students' ages.
+\item
+  highest\_educational\_level - A learner's level of education.
+\item
+  employment\_status -- specifies the learner's job status
+\item
+  employment\_area - Indicates the field in which the learned are
+  employed
+\item
+  detected\_country -- This field contains information about the
+  learner's country as determined by their network address.
+\end{itemize}
+
+There are 37296 rows in this data, It is not a big number so normal
+procedures can be followed. The dimensions like employment area and
+detected country can be the foreign keys to some other tables.
+
+The primary key for this data is learners\_id as it can identify unique
+observations alone.
+
+A brief Idea about the data can be seen in the below table.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3611}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2778}}
+  >{\centering\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3611}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\centering
+Column Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Data Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Example data
+\end{minipage} \\
+\midrule
+\endhead
+learner\_id & chr & 160d6600-ea0e-4568-bfa9-5d7cd5b8e61b \\
+enrolled\_dttm & POSIXct & 2016-08-10 14:28:49 \\
+unenrolled\_dttm & POSIXct & 2016-08-10 14:28:49 \\
+role & chr & learner \\
+fully\_participated\_dttm & POSIXct & 2016-08-10 14:28:49 \\
+purchased\_statement\_dttm & POSIXct & 2016-08-10 14:28:49 \\
+sex & chr & male \\
+country & chr & GB \\
+age\_range & chr & 46-55 \\
+highest\_education\_level & chr & university\_degree \\
+employment\_status & chr & working\_part\_time \\
+employment\_area & chr & teaching\_and\_education \\
+detected\_country & chr & GB \\
+run & num & 2 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{data-preparation-1}{%
+\subsection{DATA PREPARATION}\label{data-preparation-1}}
+
+1.Appended all the 7 data to a single data frame after adding a column
+to indicate the run for easy processing. This will helps to anlayse the
+data based on run in future.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#loading the all the data to a data frame}
+
+\NormalTok{cyber\_s\_e\_1}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.1}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_2}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.2}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_3}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.3}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_4}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.4}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_5}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.5}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_6}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.6}\NormalTok{\_enrolments}
+\NormalTok{cyber\_s\_e\_7}\OtherTok{=}\NormalTok{cyber.security}\FloatTok{.7}\NormalTok{\_enrolments}
+
+\CommentTok{\#adding a column "year" to all the data frames for representing the year.}
+
+\NormalTok{cyber\_s\_e\_1}\OtherTok{=}\NormalTok{cyber\_s\_e\_1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{1}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_2}\OtherTok{=}\NormalTok{cyber\_s\_e\_2 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{2}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_3}\OtherTok{=}\NormalTok{cyber\_s\_e\_3 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{3}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_4}\OtherTok{=}\NormalTok{cyber\_s\_e\_4 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{4}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_5}\OtherTok{=}\NormalTok{cyber\_s\_e\_5 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{5}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_6}\OtherTok{=}\NormalTok{cyber\_s\_e\_6 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{6}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_7}\OtherTok{=}\NormalTok{cyber\_s\_e\_7 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{run=}\DecValTok{7}\NormalTok{)}
+\NormalTok{cyber\_s\_e\_all}\OtherTok{=}\FunctionTok{rbind}\NormalTok{(cyber\_s\_e\_1,cyber\_s\_e\_2,cyber\_s\_e\_3,cyber\_s\_e\_4,cyber\_s\_e\_5,cyber\_s\_e\_6,cyber\_s\_e\_7)}
+\end{Highlighting}
+\end{Shaded}
+
+\hfill\break
+2.Checked for duplicates and no duplicates were found
+
+Removing duplicates is necessary because it may give false information
+about the data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{count}\NormalTok{(}\FunctionTok{unique}\NormalTok{(cyber\_s\_e\_all))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       n
+##   <int>
+## 1 37296
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{count}\NormalTok{(cyber\_s\_e\_all)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 1
+##       n
+##   <int>
+## 1 37296
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#if the values are equal then there are no duplicates}
+\end{Highlighting}
+\end{Shaded}
+
+\hfill\break
+3.Renamed table names to the most appropriate names.
+
+This will help the stakeholders to get an overall idea of the data just
+by viewing it. This will also help the new analysts to identify the
+datatypes as well.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#renaming table names }
+\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all)[}\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all) }\SpecialCharTok{==} \StringTok{\textquotesingle{}enrolled\_at\textquotesingle{}}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}enrolled\_dttm\textquotesingle{}}
+\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all)[}\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all) }\SpecialCharTok{==} \StringTok{\textquotesingle{}unenrolled\_at\textquotesingle{}}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}unenrolled\_dttm\textquotesingle{}}
+\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all)[}\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all) }\SpecialCharTok{==} \StringTok{\textquotesingle{}fully\_participated\_at\textquotesingle{}}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}fully\_participated\_dttm\textquotesingle{}}
+\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all)[}\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all) }\SpecialCharTok{==} \StringTok{\textquotesingle{}purchased\_statement\_at\textquotesingle{}}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}purchased\_statement\_dttm\textquotesingle{}}
+\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all)[}\FunctionTok{names}\NormalTok{(cyber\_s\_e\_all) }\SpecialCharTok{==} \StringTok{\textquotesingle{}gender\textquotesingle{}}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}sex\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hfill\break
+4.Data cleaning by removing unwanted spaces and removing ambiguous
+values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#data cleaning by removing unwanted spaces and removing ambiguous values}
+
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{unenrolled\_dttm }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{unenrolled\_dttm, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{learner\_id }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{learner\_id, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{role }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{role, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{sex }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{sex, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{country }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{country, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{age\_range }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{age\_range, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{highest\_education\_level }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{highest\_education\_level, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{employment\_status }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{employment\_status, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{employment\_area }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{employment\_area, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{detected\_country }\OtherTok{\textless{}{-}} \FunctionTok{trimws}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{detected\_country, }\AttributeTok{which =} \FunctionTok{c}\NormalTok{(}\StringTok{"both"}\NormalTok{))}
+
+\NormalTok{cyber\_s\_e\_all[}\StringTok{"unenrolled\_dttm"}\NormalTok{][cyber\_s\_e\_all[}\StringTok{"unenrolled\_dttm"}\NormalTok{] }\SpecialCharTok{==} \StringTok{""}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"9999{-}12{-}31 00:00:00 UTC"}
+\NormalTok{cyber\_s\_e\_all[}\StringTok{"fully\_participated\_dttm"}\NormalTok{][cyber\_s\_e\_all[}\StringTok{"fully\_participated\_dttm"}\NormalTok{] }\SpecialCharTok{==} \StringTok{""}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"9999{-}12{-}31 00:00:00 UTC"}
+\NormalTok{cyber\_s\_e\_all[}\StringTok{"purchased\_statement\_dttm"}\NormalTok{][cyber\_s\_e\_all[}\StringTok{"purchased\_statement\_dttm"}\NormalTok{] }\SpecialCharTok{==} \StringTok{""}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"9999{-}12{-}31 00:00:00 UTC"}
+\end{Highlighting}
+\end{Shaded}
+
+\hfill\break
+5.Data types were modified appropriately
+
+This will help the data analysis in future to use some inbuilt functions
+specific to each data type. For example, extracting the year value from
+enrolled\_dttm will be easy using the function format().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#data type changing}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{run}\OtherTok{\textless{}{-}}\FunctionTok{as.numeric}\NormalTok{(cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{run)}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{enrolled\_dttm}\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{( cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{enrolled\_dttm, }\AttributeTok{tz =} \StringTok{"UTC"}\NormalTok{ )}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{unenrolled\_dttm}\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{( cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{unenrolled\_dttm, }\AttributeTok{tz =} \StringTok{"UTC"}\NormalTok{ )}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{fully\_participated\_dttm}\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{( cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{fully\_participated\_dttm, }\AttributeTok{tz =} \StringTok{"UTC"}\NormalTok{ )}
+\NormalTok{cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{purchased\_statement\_dttm}\OtherTok{\textless{}{-}} \FunctionTok{as.POSIXct}\NormalTok{( cyber\_s\_e\_all}\SpecialCharTok{$}\NormalTok{purchased\_statement\_dttm, }\AttributeTok{tz =} \StringTok{"UTC"}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modelling}{%
+\subsection{MODELLING}\label{modelling}}
+
+The objective of this analysis is to find the answers to the business
+question using CRISP-DM model. For answering the first question, a
+histogram plot was generated for the different age groups that show the
+frequency of enrolled candidates for each group. Then, the majority of
+the age group is found using a bar plot since it is the best visual
+method for this task. The procedure is given below.
+
+age\_range= Age group, n= number of candidates under this category,
+prob\_n= n/Total
+
+1.age\_range
+
+The records with unknown as the age\_limit were eliminated for getting
+accurate model
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule
+age\_range & n & prob\_n \\
+\midrule
+\endhead
+\textless18 & 42 & 0.0104270 \\
+\textgreater65 & 598 & 0.1484608 \\
+18-25 & 691 & 0.1715492 \\
+26-35 & 875 & 0.2172294 \\
+36-45 & 608 & 0.1509434 \\
+46-55 & 602 & 0.1494538 \\
+56-65 & 612 & 0.1519364 \\
+\bottomrule
+\end{longtable}
+
+Plotting a probability diagram for this data
+
+\includegraphics{MOOC_Analysis_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+Comments: The above graph shows that the age group ``26-35'' is the
+majority enrolled group. Additionally, the age groups 36-45,46-55,56-65
+all seem to be uniformly distributed.
+
+\hypertarget{evaluation-1}{%
+\subsection{Evaluation}\label{evaluation-1}}
+
+\begin{itemize}
+\item
+  The model shows that the majority of candidates are from the age group
+  26-35. They can be categorized as youth people.
+\item
+  For the remaining age group above 35, the total number of candidates
+  is approximately the same in each group.
+\item
+  However, only a few candidates are enrolled under the age of 18.
+\item
+  The probability distribution of the data can be seen as more aligned
+  to uniform distribution except for the age group below 18.
+\item
+  The overall data spread across all the age groups greater than 18.
+\end{itemize}
+
+\hypertarget{business-understanding-cycle-2}{%
+\subsection{BUSINESS UNDERSTANDING-CYCLE
+2}\label{business-understanding-cycle-2}}
+
+For further exploration, the employment status of these candidates under
+the age 26-35 is analysed and its result gives the idea about how these
+candidates under this age group relate to the job type. The answer to
+this question gives a useful insight into data mining for business
+requirements.
+
+\hypertarget{data-understanding-2}{%
+\subsection{DATA UNDERSTANDING}\label{data-understanding-2}}
+
+Here, we are using the same data as that in the first cycle. So,
+additional information about the data is not required.
+
+\hypertarget{data-preparation-2}{%
+\subsection{DATA PREPARATION}\label{data-preparation-2}}
+
+Since there are some ``unknown'' values in the employment status field,
+the rows with unknowns are filtered out based on the assumption that it
+is invalid.
+
+\hypertarget{modelling-1}{%
+\subsection{MODELLING}\label{modelling-1}}
+
+The first model showed that the majority of the candidates are from the
+age group 26-35. Based on this output from cycle 2, the previous data is
+filtered and provided as input for cycle -2. Here, the main focus is on
+answering the next question that is ``what is the employment status of
+the majority age group?''. To answer, this question, a histogram plot
+showing the employment status of the age group 26-35 is used. The
+process is given in the below steps.
+
+employment\_status= employment status, n= number of candidates under
+this category, prob\_n= n/Total
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule
+employment\_status & n & prob\_n \\
+\midrule
+\endhead
+not\_working & 35 & 0.0404624 \\
+unemployed & 48 & 0.0554913 \\
+full\_time\_student & 69 & 0.0797688 \\
+working\_part\_time & 75 & 0.0867052 \\
+self\_employed & 106 & 0.1225434 \\
+looking\_for\_work & 136 & 0.1572254 \\
+working\_full\_time & 396 & 0.4578035 \\
+\bottomrule
+\end{longtable}
+
+Plotting a probability diagram regarding the candidate under the age
+group 26-35 for each employment status.
+
+\includegraphics{MOOC_Analysis_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+comments: The above-given figure show that the candidate under 26-35
+(majority age group ) are full-time time employees. Also, The candidates
+who are looking for a job stand second higher in number under the same
+category. lastly, The number of learners who are not working attending
+the course under this category is less in number.
+
+\hypertarget{evaluation-2}{%
+\subsection{Evaluation}\label{evaluation-2}}
+
+\begin{itemize}
+\item
+  The majority of candidates are working as a full-time employees under
+  the age group 26-35. (0.46\%)
+\item
+  The number of candidates who are not working under this group is
+  relatively very low (4\%)
+\item
+  This makes sense that people who are working full time might need to
+  up their skills which resulted in this variation in the data.
+\end{itemize}
+
+\hypertarget{business-understanding-cycle-3}{%
+\subsection{BUSINESS UNDERSTANDING-CYCLE
+3}\label{business-understanding-cycle-3}}
+
+So far, the information about the age group and the employment status is
+analysed for the enrolled candidates. However, a year-wise analysis will
+give better insight into the decision making like what measures should
+be taken to increase the profit. should it be urgent? etc.
+
+To answer the above question, an year-wise analysis is used.
+
+\hypertarget{data-understanding-3}{%
+\subsection{DATA UNDERSTANDING}\label{data-understanding-3}}
+
+Here, we are using the same data as that in the first cycle. but a new
+field is added which shows the date each of the candidates is enrolled.
+
+\hypertarget{data-preparation-3}{%
+\subsection{DATA PREPARATION}\label{data-preparation-3}}
+
+The same data is used in the cycle too. But, from the enrollment\_dttm
+field year is extracted and utilized for analysis. The code for this is
+shown below
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Students enrolled  with year}
+
+\NormalTok{cyber\_s\_e\_all\_yr }\OtherTok{=}\NormalTok{cyber\_s\_e\_all }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(age\_range}\SpecialCharTok{==}\StringTok{"26{-}35"} \SpecialCharTok{\&}\NormalTok{ employment\_status }\SpecialCharTok{==} \StringTok{"working\_full\_time"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{enrolled\_year =}\FunctionTok{format}\NormalTok{(enrolled\_dttm, }\AttributeTok{format=}\StringTok{"\%Y"}\NormalTok{),}
+\NormalTok{  ) }
+
+\CommentTok{\# The data frame contain the year of allotment of all candidate}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modelling-cycle-3}{%
+\subsection{Modelling cycle-3}\label{modelling-cycle-3}}
+
+Here, The input for this cycle is the output from the previous one, and
+the data is compared and analysed over different years. . Now, the
+enrolled\_year can be used for the year-wise analysis of the candidate
+under the age category 26-35 and working full time.
+
+The table shows the percentage of candidates under the age category
+26-35 and working full-time for each year.
+
+enrolled\_year= Year enrolled, n= number of candidates under this
+category, prob\_n= n/Total
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule
+enrolled\_year & n & prob\_n \\
+\midrule
+\endhead
+2018 & 92 & 0.2323232 \\
+2017 & 119 & 0.3005051 \\
+2016 & 185 & 0.4671717 \\
+\bottomrule
+\end{longtable}
+
+The bar plot and Pie chart of the above table are given below for better
+understanding
+
+\includegraphics{MOOC_Analysis_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\includegraphics{MOOC_Analysis_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+Comments: The number of candidates under the age category 26-35 who are
+working full time is decreasing from 2016 to 2018
+
+\hypertarget{evaluation-3}{%
+\subsection{Evaluation}\label{evaluation-3}}
+
+The result of three CRISP-DM cycles is discussed in this section. The
+questions that need to be answered are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  which age group were enrolled more compared to others?
+\item
+  What is the employment status of the majority age group who joined in
+  this online learning platform?
+\item
+  How does the number of enrolled candidates varies over time given that
+  the candidates are under the 26-35 age group and working as a
+  full-time employee?
+\end{enumerate}
+
+The first two parts were already answered, and the final result is that
+the number of enrolled candidates under this mentioned condition is
+decreasing from 2016 to 2018 which is not good for this organisation.
+This can happen due to many reasons, but the organisation need to take
+immediate decisions to reverse this graph.
+
+\hypertarget{deployment-1}{%
+\subsubsection{Deployment}\label{deployment-1}}
+
+With the help of the first two cycles, the number /percentage of
+candidates who are working as full-time employees under the age group
+26-35 which is also the majority age group is found. The last cycle
+deals with the year-wise analysis of the output of the second cycle
+which indicates the number of candidates is decreasing in each year from
+2016 to 2018.
+
+The importance of this exploratory analysis is that it shows some
+insights into the existing trends of this online learning platform
+regarding its business growth. The output of this design method can be
+read by a business analyst or any stakeholders and they can take
+immediate actions.
+
+The graphical reports generated by these models can be easily reported
+using any data visualization tools like Power BI, Tableau etc. Since the
+method follows an iteration or cycle-like strategy new information with
+more clarity than the previous one is obtained which is one of the
+advantages of the crisp-dm methodology. This also enables the
+stakeholder to initiate the steps from scratch and improve their
+explorations, data mining, analysis and exploration phases immediately
+as possible since CRISP-DM stands as the base for all this process.
+
+Here, in this example, the full potential CRISP-DM is not used since no
+machine learning models were implemented. Instead if ML algorithms like
+decision tree, Random forest are used we can predict some of the
+responsive variables effectively, and with each cycle, the prediction
+accuracy will be improved.
+
+\end{document}

@@ -1,0 +1,11 @@
+
+! pdflatex: Windows API error 995: The I/O operation has been aborted because of either a thread exit or an application request.
+! pdflatex: Data: path="h:\miktex\4.2\miktex/data/le\"
+
+! Sorry, but C:\PROGRA~1\MiKTeX\4.2\miktex\bin\x64\pdflatex.exe did not succeed.
+! ERROR: The I/O operation has been aborted because of either a thread exit or an application request.
+
+! ERROR: Function: ReadDirectoryChangesW
+! ERROR: Result: 995
+! ERROR: Data: path="h:\miktex\4.2\miktex/data/le\"
+! ERROR: Source: Libraries\MiKTeX\Core\FileSystemWatcher\win\winFileSystemWatcher.cpp:150
